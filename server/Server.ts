@@ -1,6 +1,9 @@
 import express, {Express, Request, Response} from "express";
 import path from 'path';
-import { commandsRouter } from './routes'
+import { 
+    commandsRouter, 
+    triggersRouter,
+} from './routes'
 
 export class Server {
 
@@ -11,6 +14,7 @@ export class Server {
         this.app = app;
     
         this.app.use(`${this.apiPrefix}/commands`, commandsRouter)
+        this.app.use(`${this.apiPrefix}/triggers`, triggersRouter)
     
         this.setupFrontend()
     }
